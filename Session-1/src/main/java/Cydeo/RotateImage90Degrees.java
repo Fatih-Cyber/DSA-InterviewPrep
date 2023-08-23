@@ -3,11 +3,11 @@ package Cydeo;
 public class RotateImage90Degrees {
     public static void main(String[] args) {
         int[][] matrix = new int[3][3];
+        int[][] m={{1,3,5,7},{10,11,16,20},{23,30,34,60}};
         int pixValue=1;
         for (int i=0;i<3;i++)
             for (int y=0;y<3;y++)
                 matrix[i][y]=pixValue++;
-
 
         rotate90(matrix);
         System.out.println();
@@ -19,24 +19,18 @@ public class RotateImage90Degrees {
 
         int n = matrix.length;
         printMatrix(matrix);
+
         for (int layer = 0; layer < n / 2; layer++) {
             int first = layer;
             int last = n - 1 - layer;
             for(int i = first; i < last; i++) {
                 int offset = i - first;
                 int temp = matrix[first][i]; // save temp
-
-                // left -> temp
-                matrix[first][i] = matrix[last-offset][first];
-                printMatrix(matrix);
-                // bottom -> left
-                matrix[last-offset][first] = matrix[last][last - offset];
-                printMatrix(matrix);
-                // right -> bottom
-                matrix[last][last - offset] = matrix[i][last];
-                printMatrix(matrix);
-                // top -> right
-                matrix[i][last] = temp; // right <- saved top
+                // Four edges, four operations
+                matrix[first][i] = matrix[last-offset][first];// bottom Left->left Top
+                matrix[last-offset][first] = matrix[last][last - offset]; //bottom right-> bottom left
+                matrix[last][last - offset] = matrix[i][last];//right top -> bottom right
+                matrix[i][last] = temp; // right top <- saved temp
                 printMatrix(matrix);
             }
         }
