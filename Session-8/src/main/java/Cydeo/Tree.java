@@ -62,4 +62,26 @@ public class Tree {
         }
         return result;
     }
+    public boolean isBalanced(Node root) {
+        // If the tree is empty, it’s balanced...
+        if (root == null)  return true;
+        // if there is any imbalance Height Function will return -1...
+        if (Height(root) == -1)  return false;
+        return true;
+    }
+     // this is not a regular height method
+    public int Height(Node root) {
+        // Termination case...
+        if (root == null)  return 0;
+        // Height of left subtree...
+        int leftHeight = Height(root.leftChild);
+        // Height of height subtree...
+        int rightHeight = Height(root.rightChild);
+        // In case of left subtree or right subtree unbalanced, return -1...
+        if (leftHeight == -1 || rightHeight == -1)  return -1;
+        // If their heights differ by more than ‘1’, return -1...
+        if (Math.abs(leftHeight - rightHeight) > 1)  return -1;
+        // Otherwise, return the height of this subtree as max(leftHeight, rightHight) + 1...
+        return Math.max(leftHeight, rightHeight) + 1;
+    }
 }
