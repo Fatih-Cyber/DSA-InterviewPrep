@@ -1,8 +1,8 @@
 package Cydeo;
 
-public class LRUCache1TestApp {
+public class LRUCache2TestApp {
     public static void main(String[] args) {
-        LRUCache1 lRUCache = new LRUCache1(2);
+        LRUCache2 lRUCache = new LRUCache2(2);
         lRUCache.put(1, 1); // cache is {1=1}
         lRUCache.put(2, 2); // cache is {1=1, 2=2}
         System.out.println(lRUCache.get(1));;    // return 1
@@ -12,13 +12,5 @@ public class LRUCache1TestApp {
         System.out.println(lRUCache.get(1));;    // return -1 (not found)
         System.out.println(lRUCache.get(3));;    // return 3
         System.out.println(lRUCache.get(4));;// return 4
-
-       /* LRUCache1 cache=new LRUCache1(3);
-        cache.put(1,1);
-        cache.put(2,2);
-        cache.put(3,3);
-        cache.put(4,4);
-        System.out.println(cache.get(1));
-        cache.printLRUCache();*/
     }
 }

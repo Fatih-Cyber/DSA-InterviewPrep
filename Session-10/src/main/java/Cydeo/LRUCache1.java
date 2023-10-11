@@ -77,7 +77,7 @@ public class LRUCache1 {
             size++;
             if(size>capacity){
                 DNode pop= popTail();
-                cacheMap.remove(pop.key);
+                cacheMap.remove(pop);
                 size--;
             }
 
